@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Heart, Mail, Lock, User, Loader2, ArrowLeft } from "lucide-react";
+import { Brain, Mail, Lock, User, Loader2, ArrowLeft } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -66,7 +66,7 @@ const Auth = () => {
         if (error) throw error;
 
         toast({
-          title: "Welcome back! 💚",
+          title: "Welcome back!",
           description: "Ready to continue your wellness journey?",
         });
         navigate("/dashboard");
@@ -113,7 +113,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen gradient-ocean flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/30 flex items-center justify-center p-6">
       {/* Back link */}
       <Link
         to="/"
@@ -126,10 +126,10 @@ const Auth = () => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-full gradient-calm flex items-center justify-center mx-auto mb-4 shadow-glow">
-            <Heart className="w-8 h-8 text-primary-foreground" />
+          <div className="w-16 h-16 rounded-lg bg-primary flex items-center justify-center mx-auto mb-4 shadow-glow">
+            <Brain className="w-8 h-8 text-primary-foreground" />
           </div>
-          <h1 className="text-3xl font-serif font-medium text-foreground">
+          <h1 className="text-3xl font-bold text-foreground">
             {isLogin ? "Welcome back" : "Join MindEase"}
           </h1>
           <p className="text-muted-foreground mt-2">
@@ -140,7 +140,7 @@ const Auth = () => {
         </div>
 
         {/* Form */}
-        <div className="bg-card rounded-3xl shadow-soft p-8">
+        <div className="bg-card rounded-xl shadow-soft p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             {!isLogin && (
               <div className="space-y-2">

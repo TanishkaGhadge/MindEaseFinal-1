@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { User, Brain } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 interface Message {
@@ -21,23 +21,23 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
   return (
     <div className={`flex gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'} animate-slide-up`}>
       {/* Avatar */}
-      <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+      <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
         isUser 
-          ? 'bg-lavender-100 text-lavender-500' 
-          : 'gradient-calm'
+          ? 'bg-secondary text-foreground' 
+          : 'bg-primary'
       }`}>
         {isUser ? (
           <User className="w-5 h-5" />
         ) : (
-          <span className="text-lg">💚</span>
+          <Brain className="w-5 h-5 text-primary-foreground" />
         )}
       </div>
 
       {/* Message bubble */}
-      <div className={`max-w-[75%] rounded-2xl px-4 py-3 ${
+      <div className={`max-w-[75%] rounded-xl px-4 py-3 ${
         isUser 
-          ? 'bg-primary text-primary-foreground rounded-tr-sm' 
-          : 'bg-card shadow-card border border-border rounded-tl-sm'
+          ? 'bg-primary text-primary-foreground' 
+          : 'bg-card shadow-card border border-border'
       }`}>
         {isUser ? (
           <p className="whitespace-pre-wrap">{displayContent}</p>
@@ -51,7 +51,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         {!isUser && message.detected_mood && (
           <div className="mt-2 pt-2 border-t border-border/50">
             <span className="text-xs text-muted-foreground">
-              Detected mood: <span className="text-sage-600 font-medium">{message.detected_mood}</span>
+              Detected mood: <span className="text-primary font-medium">{message.detected_mood}</span>
             </span>
           </div>
         )}

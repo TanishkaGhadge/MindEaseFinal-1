@@ -1,71 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* MindEase Design System — Calm & Sanctuary-like */
+/* MindEase Design System — Chill Suede & Sanctuary Vibes */
 
 @layer base {
   :root {
-    --background: 80 25% 97%;
-    --foreground: 200 15% 20%;
+    /* Beach & Ocean Palette - Soft Blues, Teals, Sandy Beige, Sunset Orange */
+    --background: 180 30% 96%;  /* Soft beach sand white */
+    --foreground: 200 20% 25%;  /* Deep ocean blue-gray */
 
-    --card: 80 20% 99%;
-    --card-foreground: 200 15% 20%;
+    --card: 180 25% 98%;        /* Light sandy cream */
+    --card-foreground: 200 20% 25%;
 
-    --popover: 80 20% 99%;
-    --popover-foreground: 200 15% 20%;
+    --popover: 180 25% 98%;
+    --popover-foreground: 200 20% 25%;
 
-    --primary: 158 35% 45%;
+    /* Ocean teal primary with sunset orange accent */
+    --primary: 25 75% 60%;      /* Warm sunset orange */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 30% 92%;
-    --secondary-foreground: 260 25% 35%;
+    /* Sandy beige secondary */
+    --secondary: 40 35% 88%;    /* Warm beach sand */
+    --secondary-foreground: 200 25% 30%;
 
-    --muted: 40 30% 94%;
-    --muted-foreground: 200 10% 45%;
+    /* Soft sky blue muted tones */
+    --muted: 190 30% 92%;       /* Light sky blue */
+    --muted-foreground: 200 20% 45%;
 
-    --accent: 15 60% 85%;
-    --accent-foreground: 15 50% 30%;
+    /* Tropical teal accent */
+    --accent: 180 45% 55%;      /* Ocean teal */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 65% 55%;
+    --destructive: 0 60% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 15% 88%;
-    --input: 200 15% 92%;
-    --ring: 158 35% 45%;
+    --border: 180 25% 85%;      /* Soft ocean border */
+    --input: 180 25% 90%;       /* Light beach input */
+    --ring: 25 75% 60%;         /* Orange focus ring */
 
     --radius: 1rem;
 
-    --gradient-calm: linear-gradient(135deg, hsl(158 35% 45%), hsl(180 30% 55%));
-    --gradient-sunrise: linear-gradient(135deg, hsl(40 70% 90%), hsl(15 60% 85%));
-    --gradient-lavender: linear-gradient(135deg, hsl(260 30% 92%), hsl(280 25% 88%));
-    --gradient-ocean: linear-gradient(180deg, hsl(200 40% 95%), hsl(180 30% 90%));
+    /* Beach & Ocean gradients with sunset orange */
+    --gradient-beach: linear-gradient(135deg, hsl(180 35% 94%), hsl(190 40% 90%), hsl(200 35% 92%));
+    --gradient-ocean: linear-gradient(135deg, hsl(190 45% 65%), hsl(180 50% 60%), hsl(170 45% 65%));
+    --gradient-sand: linear-gradient(135deg, hsl(40 40% 88%), hsl(45 35% 85%));
+    --gradient-tropical: linear-gradient(135deg, hsl(160 40% 65%), hsl(170 45% 60%));
+    --gradient-sky: linear-gradient(180deg, hsl(200 50% 85%), hsl(190 45% 88%));
+    --gradient-lagoon: linear-gradient(135deg, hsl(180 50% 70%), hsl(170 55% 65%));
+    --gradient-sunset: linear-gradient(135deg, hsl(25 75% 70%), hsl(35 70% 65%), hsl(180 40% 65%));
+    --gradient-coral: linear-gradient(135deg, hsl(15 80% 65%), hsl(25 75% 60%));
 
-    --shadow-soft: 0 4px 20px -4px hsl(200 15% 20% / 0.08);
-    --shadow-glow: 0 8px 40px -8px hsl(158 35% 45% / 0.2);
-    --shadow-card: 0 2px 12px -2px hsl(200 15% 20% / 0.06);
+    /* Soft, calming shadows */
+    --shadow-soft: 0 2px 20px -6px hsl(180 30% 40% / 0.12);
+    --shadow-glow: 0 4px 32px -8px hsl(180 45% 55% / 0.25);
+    --shadow-card: 0 1px 12px -2px hsl(180 30% 40% / 0.08);
+    --shadow-warm: 0 8px 40px -12px hsl(180 40% 50% / 0.18);
 
+    /* Gentle, wave-like transitions */
     --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-breathe: cubic-bezier(0.37, 0, 0.63, 1);
+    --ease-float: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .dark {
-    --background: 200 20% 10%;
-    --foreground: 80 20% 95%;
+    --background: 25 20% 12%;
+    --foreground: 35 20% 95%;
 
-    --card: 200 18% 14%;
-    --card-foreground: 80 20% 95%;
+    --card: 25 18% 15%;
+    --card-foreground: 35 20% 95%;
 
-    --primary: 158 40% 55%;
-    --secondary: 260 20% 25%;
-    --muted: 200 15% 20%;
-    --accent: 15 50% 30%;
+    --primary: 85 30% 60%;
+    --secondary: 45 15% 20%;
+    --muted: 25 15% 18%;
+    --accent: 20 30% 25%;
 
-    --border: 200 15% 25%;
-    --input: 200 15% 20%;
-    --ring: 158 40% 55%;
+    --border: 25 15% 22%;
+    --input: 25 15% 18%;
+    --ring: 85 30% 60%;
   }
 
   * {
@@ -74,54 +88,83 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
     scroll-behavior: smooth;
+    line-height: 1.6;
+    background: var(--gradient-beach);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Fraunces', serif;
+    line-height: 1.3;
   }
 }
 
 @layer utilities {
-  .gradient-calm { background: var(--gradient-calm); }
-  .gradient-sunrise { background: var(--gradient-sunrise); }
-  .gradient-lavender { background: var(--gradient-lavender); }
+  .gradient-beach { background: var(--gradient-beach); }
   .gradient-ocean { background: var(--gradient-ocean); }
+  .gradient-sand { background: var(--gradient-sand); }
+  .gradient-tropical { background: var(--gradient-tropical); }
+  .gradient-sky { background: var(--gradient-sky); }
+  .gradient-lagoon { background: var(--gradient-lagoon); }
+  .gradient-sunset { background: var(--gradient-sunset); }
+  .gradient-coral { background: var(--gradient-coral); }
 
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-warm { box-shadow: var(--shadow-warm); }
 
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .animate-breathe { animation: breathe 4s ease-in-out infinite; }
-  .animate-fade-in { animation: fade-in 0.6s var(--ease-gentle) forwards; }
-  .animate-slide-up { animation: slide-up 0.6s var(--ease-gentle) forwards; }
+  .animate-float { animation: float 8s ease-in-out infinite; }
+  .animate-breathe { animation: breathe 6s var(--ease-breathe) infinite; }
+  .animate-breathe-slow { animation: breathe 10s var(--ease-breathe) infinite; }
+  .animate-fade-in { animation: fade-in 0.8s var(--ease-gentle) forwards; }
+  .animate-slide-up { animation: slide-up 0.8s var(--ease-gentle) forwards; }
+  .animate-pulse-gentle { animation: pulse-gentle 3s var(--ease-gentle) infinite; }
+  .animate-sway { animation: sway 12s var(--ease-float) infinite; }
 }
 
-/* Animations */
+/* Chill, relaxing animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(-4px) rotate(-0.5deg); }
 }
 
 @keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 1; 
+  }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(4px) rotate(0.5deg); }
+  75% { transform: translateX(-4px) rotate(-0.5deg); }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Scrollbar */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.02); }
+}
+
+/* Custom scrollbar with suede theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -131,3 +174,99 @@
   border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Beach-themed component styles */
+.suede-card {
+  @apply bg-gradient-to-br from-card via-card/95 to-card/90 backdrop-blur-sm border border-border/60 shadow-soft;
+}
+
+.suede-hero {
+  background: linear-gradient(135deg, 
+    hsl(25 60% 88%) 0%,
+    hsl(190 45% 92%) 20%, 
+    hsl(180 40% 90%) 40%, 
+    hsl(170 35% 88%) 60%, 
+    hsl(180 38% 91%) 80%, 
+    hsl(30 55% 90%) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle coconut tree silhouettes in background */
+.suede-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M50 400 Q50 300 80 250 L85 400 M80 250 Q70 240 60 220 Q50 200 55 180 M80 250 Q90 240 100 220 Q110 200 105 180 M150 400 Q150 320 170 280 L175 400 M170 280 Q165 270 160 250 Q155 230 158 210 M170 280 Q175 270 180 250 Q185 230 182 210' fill='none' stroke='%2316a085' stroke-width='2' opacity='0.08'/%3E%3Cpath d='M1050 400 Q1050 300 1080 250 L1085 400 M1080 250 Q1070 240 1060 220 Q1050 200 1055 180 M1080 250 Q1090 240 1100 220 Q1110 200 1105 180 M1150 400 Q1150 320 1170 280 L1175 400 M1170 280 Q1165 270 1160 250 Q1155 230 1158 210 M1170 280 Q1175 270 1180 250 Q1185 230 1182 210' fill='none' stroke='%2316a085' stroke-width='2' opacity='0.08'/%3E%3C/svg%3E") 
+    bottom center / cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.suede-section {
+  @apply bg-gradient-to-br from-secondary/30 via-secondary/20 to-secondary/10 backdrop-blur-sm;
+}
+
+.suede-feature-card {
+  @apply bg-gradient-to-br from-card/80 to-card/60 backdrop-blur-md border border-border/40 shadow-card hover:shadow-soft;
+  transition: all 400ms var(--ease-gentle);
+}
+
+.suede-feature-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.suede-button {
+  @apply bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-soft hover:shadow-glow text-primary-foreground;
+  transition: all 300ms var(--ease-gentle);
+}
+
+.suede-button:hover {
+  transform: translateY(-1px);
+}
+
+.suede-navbar {
+  @apply bg-background/70 backdrop-blur-xl border-b border-border/50;
+  background: linear-gradient(180deg, 
+    hsl(180 30% 96% / 0.8) 0%, 
+    hsl(180 30% 96% / 0.6) 100%);
+}
+
+/* Breathing component suede theme */
+.breathing-card-suede {
+  @apply bg-gradient-to-br from-card via-secondary/20 to-accent/10 backdrop-blur-sm border border-border/60 shadow-warm;
+}
+
+.camera-container-suede {
+  @apply relative overflow-hidden bg-gradient-to-br from-muted/40 to-muted/20 border-2 border-primary/30 shadow-warm;
+  border-radius: 1.5rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .suede-card {
+    @apply p-4;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .animate-float,
+  .animate-pulse-gentle,
+  .animate-sway {
+    animation: none;
+  }
+}

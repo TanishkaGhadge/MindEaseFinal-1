@@ -1,16 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Play, Pause, Square, Volume2, Timer, Music } from "lucide-react";
+import { Play, Pause, Square, Volume2, Timer, Music, Waves } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-type SoundType = "omkar" | "flute" | null;
+type SoundType = "omkar" | "flute" | "ocean" | null;
 type TimerDuration = 2 | 5 | 10 | null;
 
-// Using royalty-free meditation sounds
+// Audio files are in the public/sounds folder
 const SOUNDS = {
-  omkar: "https://assets.mixkit.co/music/preview/mixkit-meditation-ambient-nature-sounds-2493.mp3",
-  flute: "https://assets.mixkit.co/music/preview/mixkit-relaxing-in-nature-522.mp3",
+  omkar: "/sounds/om-chanting.mp3?v=2", // Om chanting meditation - TunePocket Spiritual Om Chant
+  flute: "/sounds/flute.mp3", // Relaxing Krishna flute music
+  ocean: "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3", // Ocean waves
 };
 
 export const MeditationToolkit = () => {
@@ -128,29 +129,33 @@ export const MeditationToolkit = () => {
   };
 
   return (
-    <div className="p-6 rounded-3xl bg-card shadow-card border border-border">
+    <div className="p-6 rounded-3xl bg-gradient-to-br from-green-100 via-teal-50 to-blue-100 border-2 border-green-200 shadow-2xl">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 rounded-full gradient-lavender flex items-center justify-center">
-          <Music className="w-6 h-6 text-primary-foreground" />
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center shadow-lg">
+          {currentSound === "ocean" ? (
+            <Waves className="w-6 h-6 text-white" />
+          ) : (
+            <Music className="w-6 h-6 text-white" />
+          )}
         </div>
         <div>
-          <h3 className="text-xl font-serif font-medium text-foreground">Relax & Meditate</h3>
-          <p className="text-sm text-muted-foreground">Find your inner peace</p>
+          <h3 className="text-xl font-serif font-medium text-green-800">Relax & Meditate</h3>
+          <p className="text-sm text-teal-600">Find your inner peace</p>
         </div>
       </div>
 
       {/* Visualization */}
       {isPlaying && (
-        <div className="relative h-40 mb-6 rounded-2xl gradient-ocean flex items-center justify-center overflow-hidden">
+        <div className="relative h-40 mb-6 rounded-2xl bg-gradient-to-br from-blue-200 via-teal-100 to-green-200 flex items-center justify-center overflow-hidden shadow-lg">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-32 h-32 rounded-full bg-sage-300/30 animate-breathing" />
-            <div className="absolute w-24 h-24 rounded-full bg-sage-400/40 animate-breathing" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute w-16 h-16 rounded-full bg-sage-500/50 animate-breathing" style={{ animationDelay: '1s' }} />
+            <div className="w-32 h-32 rounded-full bg-green-300/40 animate-breathing" />
+            <div className="absolute w-24 h-24 rounded-full bg-teal-400/50 animate-breathing" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute w-16 h-16 rounded-full bg-blue-500/60 animate-breathing" style={{ animationDelay: '1s' }} />
           </div>
           {timeRemaining !== null && (
             <div className="relative z-10 text-center">
-              <p className="text-3xl font-medium text-sage-700">{formatTime(timeRemaining)}</p>
-              <p className="text-sm text-sage-600">remaining</p>
+              <p className="text-3xl font-medium text-green-800">{formatTime(timeRemaining)}</p>
+              <p className="text-sm text-teal-700">remaining</p>
             </div>
           )}
         </div>
@@ -158,12 +163,12 @@ export const MeditationToolkit = () => {
 
       {/* Sound selection */}
       <div className="space-y-4 mb-6">
-        <p className="text-sm font-medium text-foreground">Choose your sound</p>
-        <div className="grid grid-cols-2 gap-3">
+        <p className="text-sm font-medium text-green-800">Choose your sound</p>
+        <div className="grid grid-cols-3 gap-3">
           <Button
             variant={currentSound === "omkar" ? "default" : "outline"}
             onClick={() => playSound("omkar")}
-            className="h-auto py-4 flex flex-col gap-2 rounded-2xl"
+            className={`h-auto py-4 flex flex-col gap-2 rounded-2xl ${currentSound === "omkar" ? 'bg-gradient-to-br from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white border-orange-300' : 'border-green-200 hover:bg-green-50'}`}
           >
             <span className="text-2xl">🕉️</span>
             <span>Om Chanting</span>
@@ -171,10 +176,18 @@ export const MeditationToolkit = () => {
           <Button
             variant={currentSound === "flute" ? "default" : "outline"}
             onClick={() => playSound("flute")}
-            className="h-auto py-4 flex flex-col gap-2 rounded-2xl"
+            className={`h-auto py-4 flex flex-col gap-2 rounded-2xl ${currentSound === "flute" ? 'bg-gradient-to-br from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white border-teal-300' : 'border-green-200 hover:bg-green-50'}`}
           >
             <span className="text-2xl">🎶</span>
             <span>Calming Flute</span>
+          </Button>
+          <Button
+            variant={currentSound === "ocean" ? "default" : "outline"}
+            onClick={() => playSound("ocean")}
+            className={`h-auto py-4 flex flex-col gap-2 rounded-2xl ${currentSound === "ocean" ? 'bg-gradient-to-br from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white border-blue-300' : 'border-green-200 hover:bg-green-50'}`}
+          >
+            <Waves className="w-8 h-8 mx-auto text-blue-500" />
+            <span>Ocean Waves</span>
           </Button>
         </div>
       </div>
@@ -236,3 +249,4 @@ export const MeditationToolkit = () => {
     </div>
   );
 };
+
